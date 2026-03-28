@@ -1,6 +1,6 @@
 ---
 name: 1c-actions
-description: "Пакетные операции с платформой 1С:Предприятие 8. Сборка/разборка внешних обработок (.epf/.erf) в XML, загрузка/выгрузка конфигураций и расширений, сборка файлов поставки (.cf/.cfe), проверка BSL-кода линтером, запуск предприятия и конфигуратора. Используй когда нужно: собрать или разобрать обработку/отчёт, загрузить или выгрузить конфигурацию в XML, работать с расширениями 1С, собрать CF/CFE, проверить код линтером, запустить 1С:Предприятие или конфигуратор."
+description: "Пакетные операции с платформой 1С:Предприятие 8. Сборка/разборка внешних обработок (.epf/.erf) в XML, загрузка/выгрузка конфигураций и расширений, сборка файлов поставки (.cf/.cfe), запуск предприятия и конфигуратора. Используй когда нужно: собрать или разобрать обработку/отчёт, загрузить или выгрузить конфигурацию в XML, работать с расширениями 1С, собрать CF/CFE, запустить 1С:Предприятие или конфигуратор."
 ---
 
 # 1c-actions
@@ -108,22 +108,6 @@ powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-cfe.ps
 
 ---
 
-## Проверка кода
-
-### bsl-lint.ps1 — проверка BSL-кода линтером
-
-```bash
-# Базовая проверка
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/bsl-lint.ps1 -SrcDir "src/cf"
-
-# С конфигурацией и отчётом в JSON
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/bsl-lint.ps1 -SrcDir "src/cf" -ConfigFile ".bsl-language-server.json" -Reporter json -OutputFile "build/bsl-report.json"
-```
-
-Требуется [BSL Language Server](https://github.com/1c-syntax/bsl-language-server) — в PATH или JAR-файл рядом со скриптами.
-
----
-
 ## Запуск 1С
 
 ### run-enterprise.ps1 — запуск предприятия
@@ -150,10 +134,6 @@ powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/run-designer
 
 1. Собрать CF: `powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-cf.ps1 -XmlDir "src/cf" -OutputFile "build/МояКонфигурация.cf"`
 2. Собрать CFE: `powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-cfe.ps1 -XmlDir "src/ext/АМЕ" -ExtName "АМЕ" -OutputFile "build/АМЕ.cfe"`
-
-### Проверить код перед коммитом
-
-1. Проверить: `powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/bsl-lint.ps1 -SrcDir "src/cf"`
 
 ### Исправить ошибку в обработке
 

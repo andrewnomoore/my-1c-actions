@@ -18,7 +18,6 @@
 | ⬇️ | Выгрузить конфигурацию из базы в XML | `dump-config.ps1` |
 | 📥 | Загрузить расширение в базу | `load-extension.ps1` |
 | 📤 | Выгрузить расширение из базы | `dump-extension.ps1` |
-| 🔍 | Проверить BSL-код линтером | `bsl-lint.ps1` |
 | ▶️ | Запустить 1С:Предприятие | `run-enterprise.ps1` |
 | ⚙️ | Запустить Конфигуратор | `run-designer.ps1` |
 
@@ -31,7 +30,7 @@
 Без 1c-actions Claude Code не знает, как взаимодействовать с платформой 1С. С ним — может:
 
 - 🛠️ **Собирать и разбирать** обработки, конфигурации, расширения
-- 📝 **Редактировать BSL-код** и сразу проверять его линтером
+- 📝 **Редактировать BSL-код**
 - 🚀 **Деплоить** — собрать CF/CFE из исходников для переноса на прод
 - 🔄 **Полный цикл разработки** — выгрузить → изменить → проверить → загрузить
 
@@ -57,7 +56,6 @@ your-project/
 │               ├── dump-config.ps1
 │               ├── load-extension.ps1
 │               ├── dump-extension.ps1
-│               ├── bsl-lint.ps1
 │               ├── run-enterprise.ps1
 │               └── run-designer.ps1
 ├── .1c-devbase.ps1
@@ -124,21 +122,6 @@ powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-cfe.ps
   -XmlDir "src/ext/АМЕ" -ExtName "АМЕ" -OutputFile "build/АМЕ.cfe"
 ```
 
-### 🔍 Проверить код линтером
-
-```bash
-# Быстрая проверка
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/bsl-lint.ps1 \
-  -SrcDir "src/cf"
-
-# С отчётом в JSON
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/bsl-lint.ps1 \
-  -SrcDir "src/cf" -ConfigFile ".bsl-language-server.json" \
-  -Reporter json -OutputFile "build/bsl-report.json"
-```
-
-> 💡 Для линтинга нужен [BSL Language Server](https://github.com/1c-syntax/bsl-language-server) — в PATH или JAR рядом со скриптами.
-
 ### 🔄 Обновить расширение
 
 ```bash
@@ -168,7 +151,6 @@ powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/load-config.
 - PowerShell 5.1+
 - 1С:Предприятие 8.3
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-- [BSL Language Server](https://github.com/1c-syntax/bsl-language-server) *(только для `bsl-lint`)*
 
 ---
 
