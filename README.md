@@ -1,4 +1,4 @@
-# 🚀 1c-actions
+# 🚀 platform_actions
 
 **Научи Claude Code работать с 1С:Предприятие!**
 
@@ -27,7 +27,7 @@
 
 > «Клод, разбери обработку, исправь баг в модуле формы и собери обратно»
 
-Без 1c-actions Claude Code не знает, как взаимодействовать с платформой 1С. С ним — может:
+Без platform_actions Claude Code не знает, как взаимодействовать с платформой 1С. С ним — может:
 
 - 🛠️ **Собирать и разбирать** обработки, конфигурации, расширения
 - 📝 **Редактировать BSL-код**
@@ -44,7 +44,7 @@
 your-project/
 ├── .claude/
 │   └── commands/
-│       └── 1c-actions/
+│       └── platform_actions/
 │           ├── SKILL.md
 │           └── scripts/
 │               ├── 1c-common.ps1
@@ -86,7 +86,7 @@ $Global:OneCBasePath = "C:\Users\user\bases\my-base"
 
 ### 3. Готово! 🎉
 
-В Claude Code теперь доступна команда **`/1c-actions`**. Просто попросите Claude сделать то, что нужно.
+В Claude Code теперь доступна команда **`/platform_actions`**. Просто попросите Claude сделать то, что нужно.
 
 ---
 
@@ -96,17 +96,17 @@ $Global:OneCBasePath = "C:\Users\user\bases\my-base"
 
 ```bash
 # Разобрать
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/dump-epf.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/dump-epf.ps1 \
   -XmlFile "src/epf/МояОбработка.xml" -EpfFile "D:/Исходная.epf"
 
 # Отредактировать BSL-файлы (Claude сделает это за вас!)
 
 # Собрать обратно
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-epf.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/build-epf.ps1 \
   -XmlFile "src/epf/МояОбработка.xml" -OutputFile "build/МояОбработка.epf"
 
 # Проверить
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/run-enterprise.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/run-enterprise.ps1 \
   -EpfFile "build/МояОбработка.epf"
 ```
 
@@ -114,11 +114,11 @@ powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/run-enterpri
 
 ```bash
 # Конфигурация
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-cf.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/build-cf.ps1 \
   -XmlDir "src/cf" -OutputFile "build/МояКонфигурация.cf"
 
 # Расширение
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-cfe.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/build-cfe.ps1 \
   -XmlDir "src/ext/АМЕ" -ExtName "АМЕ" -OutputFile "build/АМЕ.cfe"
 ```
 
@@ -126,20 +126,20 @@ powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/build-cfe.ps
 
 ```bash
 # Выгрузить
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/dump-extension.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/dump-extension.ps1 \
   -XmlDir "src/ext/МоёРасширение" -ExtName "МоёРасширение" -Update
 
 # Изменить код
 
 # Загрузить обратно
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/load-extension.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/load-extension.ps1 \
   -XmlDir "src/ext/МоёРасширение" -ExtName "МоёРасширение"
 ```
 
 ### ⬆️ Частичная загрузка конфигурации
 
 ```bash
-powershell.exe -NoProfile -File .claude/commands/1c-actions/scripts/load-config.ps1 \
+powershell.exe -NoProfile -File .claude/commands/platform_actions/scripts/load-config.ps1 \
   -XmlDir "src/cf" -Files "CommonModules/МойМодуль/Ext/Module.bsl"
 ```
 
@@ -178,4 +178,10 @@ MIT — используйте свободно в любых проектах.
 
 <p align="center">
   <b>⭐ Поставьте звезду, если проект оказался полезен!</b>
+</p>
+
+---
+
+<p align="center">
+  📺 <a href="https://www.youtube.com/@svhovbase">YouTube-канал автора</a>
 </p>
